@@ -340,6 +340,10 @@ var RenderedCell = (function (_super) {
     };
     RenderedCell.prototype.onEnterKeyDown = function () {
         if (this.editingCell) {
+            var colDef = this.column.getColDef();
+            if (colDef.suppressSubmissionInEdit) {
+                return;
+            }
             this.stopRowOrCellEdit();
             this.focusCell(true);
         }
@@ -399,6 +403,10 @@ var RenderedCell = (function (_super) {
     };
     RenderedCell.prototype.onNavigationKeyPressed = function (event, key) {
         if (this.editingCell) {
+            var colDef = this.column.getColDef();
+            if (colDef.suppressNavigateOutInEdit) {
+                return;
+            }
             this.stopRowOrCellEdit();
         }
         this.rowRenderer.navigateToNextCell(event, key, this.gridCell.rowIndex, this.column, this.node.floating);
