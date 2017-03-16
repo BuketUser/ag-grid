@@ -411,6 +411,12 @@ export class RenderedCell extends Component {
 
     private onEnterKeyDown(): void {
         if (this.editingCell) {
+            var colDef = this.column.getColDef();
+
+            if(colDef.suppressSubmissionInEdit) {
+                return;
+            }
+
             this.stopRowOrCellEdit();
             this.focusCell(true);
         } else {
@@ -477,6 +483,12 @@ export class RenderedCell extends Component {
 
     private onNavigationKeyPressed(event: KeyboardEvent, key: number): void {
         if (this.editingCell) {
+            var colDef = this.column.getColDef();
+
+            if(colDef.suppressNavigateOutInEdit) {
+                return;
+            }
+
             this.stopRowOrCellEdit();
         }
         this.rowRenderer.navigateToNextCell(event, key, this.gridCell.rowIndex, this.column, this.node.floating);

@@ -174,6 +174,10 @@ export interface ColDef extends AbstractColDef {
     /** Set to true if you do not want this column to be auto-resizable by double clicking it's edge. */
     suppressAutoSize?: boolean;
 
+    suppressNavigateOutInEdit?: boolean;
+    suppressSubmissionInEdit?: boolean;
+
+
     /** If true, GUI will allow adding this columns as a row group */
     enableRowGroup?: boolean;
 
